@@ -1,0 +1,53 @@
+Web driver
+1. New folder create
+2. Pom.xml me dependencies
+3. New demo class and copy code there
+4. Check chrome version
+5. Install chrome driver 
+6. Move the chrome driver application file to resource in src in main
+7. Update chrome driver path in demo.java file
+8. Run code
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Add i pom.xml below version
+
+<dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.16.1</version>
+        </dependency>
+    </dependencies>
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+add in new demo class
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Demo {
+    public static void main(String[] args) throws InterruptedException{
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\hp\\Desktop\\AGILE\\sellium_webdriver\\src\\main\\resources\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.myntra.com/");
+
+        System.out.println(driver.getTitle());
+//        Thread.sleep(10000);
+
+        driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).click();
+        driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).sendKeys("tshirts");
+        Thread.sleep(4000);
+
+        driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).sendKeys(Keys.ENTER);
+
+
+//        driver.quit();
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+paste chrome driver application in resources and update path by copying absolute path
